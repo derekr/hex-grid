@@ -4,6 +4,7 @@ var defined = require('defined');
 module.exports = function (opts, hexes) {
     var rsize = dims(opts);
     var hsize = dims(isharray(hexes) ? hexes[0] : hexes);
+
     if (!isharray(hexes)) {
         var h = hexes;
         hexes = [];
@@ -11,12 +12,14 @@ module.exports = function (opts, hexes) {
     }
     var spacing = defined(opts.spacing, 0);
     var offset = opts.offset;
+
     if (!offset && opts.element) {
         offset = {
             x: opts.element.offsetLeft,
             y: opts.element.offsetTop
         };
     }
+
     if (!offset) {
         offset = {
             x: defined(opts.offsetLeft, 0),
@@ -36,8 +39,8 @@ module.exports = function (opts, hexes) {
         var hex = hexes[i];
         if (hex.style) {
             hex.style.position = 'absolute';
-            hex.style.left = x;
-            hex.style.top = y;
+            hex.style.left = x + 'px';
+            hex.style.top = y + 'px';
         }
         results.push({ x: x, y: y });
 
