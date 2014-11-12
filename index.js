@@ -63,6 +63,7 @@ module.exports = function (opts, hexes) {
             x = (row % 2 ? (hsize.width / 2) + (spacing / 2) : 0);
         }
     }
+    var totalHeight = y + (Math.floor(hsize.height * 3/4) + spacing);
     var res = {
         grid: results,
         points: points,
@@ -76,7 +77,8 @@ module.exports = function (opts, hexes) {
         lookup: function (x, y) {
             var i = res.lookupIndex(x, y);
             return i >= 0 ? hexes[i] : undefined;
-        }
+        },
+        height: totalHeight
     };
     return res;
 };
